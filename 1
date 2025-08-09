@@ -1,0 +1,27 @@
+class Employee
+{
+int
+salary=50000;
+void
+basic_salary()
+{
+System.out.println(&quot;Basic salary is &quot; + salary);
+}
+}
+class programmer extends Employee
+{
+int increment=10000;
+int prog_salary = salary +
+increment; void print_salary()
+{
+System.out.println(&quot;Programmer salary is &quot; + prog_salary);
+}
+}
+class emp
+{
+public static void main(String args[])
+{
+programmer p1=new
+programmer(); p1.basic_salary();
+p1.print_salary();
+}
