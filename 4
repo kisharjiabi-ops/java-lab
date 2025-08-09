@@ -1,0 +1,54 @@
+Pre-defined package
+import java.lang.*;
+class exlang {
+public static void main(String
+args []) { int a = 100, b =
+200,result;
+result= Math.max(a,b);
+System.out.printf(&quot;Maximum is = &quot;+result);
+}
+}
+
+User defined package
+Create a folder &quot;pack&quot; inside your rollno folder and open a notepad and
+save file as Calculator.java
+package pack;
+public class Calculator {
+public int add(int a, int
+b) {
+return a + b;
+}
+public int subtract(int a, int b) {
+return a - b;
+}
+public int multiply(int a, int b) {
+return a * b;
+}
+public int divide(int a, int
+b) { if (b != 0) {
+return a / b;
+} else {
+throw new ArithmeticException(&quot;Cannot divide by zero!&quot;);
+}
+}
+}
+
+open a notepad file and save file as &quot; PackageExample.java&quot; inside your
+rollno folder import pack.Calculator;
+public class PackageExample {
+public static void main(String[] args) {
+Calculator calculator = new
+
+Calculator(); int result =
+calculator.add(5, 3);
+System.out.println(&quot;Addition: &quot; +
+result); result = calculator.subtract(5,
+3); System.out.println(&quot;Subtraction: &quot;
++ result); result =
+calculator.multiply(5, 3);
+System.out.println(&quot;Multiplication: &quot; +
+result); result = calculator.divide(10, 2);
+System.out.println(&quot;Division: &quot; + result);
+
+}
+}
