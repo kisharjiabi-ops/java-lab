@@ -1,0 +1,23 @@
+interface Shapes {
+    void draw();
+}
+
+class Rectangle implements Shapes {
+    public void draw() {
+        System.out.println("drawing rectangle");
+    }
+}
+
+class Circle implements Shapes {
+    public void draw() {
+        System.out.println("drawing circle");
+    }
+}
+
+class T1 {
+    public static void main(String[] args) {
+        Shapes d = new Circle();
+        d.draw();
+    }
+}
+
