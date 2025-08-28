@@ -1,0 +1,19 @@
+<HTML>
+
+<HEAD>
+
+<TITLE>Indian Flag Applet</TITLE>
+
+</HEAD>
+
+<body>
+
+<h1>Indian Flag Using Java Applet</h1>
+
+<APPLET CODE="India_Flag.class" width="320" height="480">
+
+</APPLET>
+
+</body>
+
+</HTML>
