@@ -1,0 +1,22 @@
+//java file
+import java.applet.Applet;
+import java.awt.*;
+public class MyFirstApplet extends Applet { public
+void paint(Graphics g) {
+g.drawString ("Hello World of Java!",25, 25);
+g.drawString ("This is my first webpage using applets!!",50, 100);
+}
+}
+//html file
+<HTML>
+<HEAD>
+<TITLE>
+Hello World Applet
+</TITLE>
+</HEAD>
+<body>
+<h1>Hi, This is My First Java Applet on the Web!</h1>
+<APPLET CODE= "MyFirstApplet.class" width= 500 height=400>
+</APPLET>
+</body>
+</HTML>
