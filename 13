@@ -1,0 +1,129 @@
+import java.sql.*;
+
+public class EmployeeJDBC {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/employed";
+        String user = "root";
+        String password = "";
+
+        String empName = "John";
+        int empAge = 22;
+
+        try (Connection con = DriverManager.getConnection(url, user, password)) {
+            con.setAutoCommit(true);
+            System.out.println("Connected to database\n");
+
+            String insertSQL = "INSERT INTO employees(emp_name, emp_age) VALUES(?, ?)";
+            try (PreparedStatement pst = con.prepareStatement(insertSQL)) {
+                pst.setString(1, empName);
+                pst.setInt(2, empAge);
+                int rows = pst.executeUpdate();
+                System.out.println(rows + " record inserted.");
+            }
+            displayTable(con);
+
+            String updateSQL = "UPDATE employees SET emp_age=? WHERE emp_name=?";
+            try (PreparedStatement pst = con.prepareStatement(updateSQL)) {
+                pst.setInt(1, 23);
+                pst.setString(2, empName);
+                int rows = pst.executeUpdate();
+                System.out.println(rows + " record updated.");
+            }
+            displayTable(con);
+
+            String deleteSQL = "DELETE FROM employees WHERE emp_name=?";
+            try (PreparedStatement pst = con.prepareStatement(deleteSQL)) {
+                pst.setString(1, empName);
+                int rows = pst.executeUpdate();
+                System.out.println(rows + " record deleted.");
+            }
+            displayTable(con);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void displayTable(Connection con) throws SQLException {
+        String selectSQL = "SELECT * FROM employees";
+        try (Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery(selectSQL)) {
+            System.out.println("Current employees table:");
+            System.out.println("ID\tName\tAge");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("emp_name");
+                int age = rs.getInt("emp_age");
+                System.out.println(id + "\t" + name + "\t" + age);
+            }
+            System.out.println();
+        }
+    }
+}
+
+Explanation of the Program
+
+Database Connection
+
+Connects to MySQL database named employed.
+
+Username: root and password: "" (empty).
+
+Uses DriverManager.getConnection() to establish the connection.
+
+Insert Operation
+
+Inserts a new employee (Name: John, Age: 22) into the employees table.
+
+Update Operation
+
+Updates John’s age to 23.
+
+Delete Operation
+
+Deletes John’s record from the table.
+
+Display Function (displayTable)
+
+Displays current rows of employees table after each operation.
+
+🛠️ How to Execute the Program
+1. Setup Database
+
+Open MySQL and create a database:
+
+CREATE DATABASE employed;
+USE employed;
+
+
+Create the employees table:
+
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    emp_age INT
+);
+
+2. Add MySQL JDBC Driver
+
+Download MySQL Connector/J (JAR file).
+
+Add it to your classpath:
+
+javac -cp .;mysql-connector-j-8.0.33.jar EmployeeJDBC.java
+java -cp .;mysql-connector-j-8.0.33.jar EmployeeJDBC
+
+
+(For Linux/Mac use : instead of ;)
+
+3. Run the Program
+
+It will:
+
+Insert John, 22.
+
+Update John’s age to 23.
+
+Delete John’s record.
+
+Show the table contents after each operation.
