@@ -1,0 +1,30 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class UserForm {
+    public static void main(String[] args) {
+        JFrame f = new JFrame("User Information");
+        f.setSize(400, 300);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        f.setLayout(new GridLayout(5, 2)); // Increased rows to fit all components
+
+        f.add(new JLabel("Name:"));
+        JTextField name = new JTextField();
+        f.add(name);
+
+        f.add(new JLabel("Age:"));
+        JTextField age = new JTextField();
+        f.add(age);
+
+        f.add(new JLabel("Qualification:"));
+        JTextField qualification = new JTextField();
+        f.add(qualification);
+
+        f.add(new JLabel("Address:"));
+        JTextArea addr = new JTextArea(3, 20);
+        f.add(new JScrollPane(addr));
+
+        f.setVisible(true);
+    }
+}
